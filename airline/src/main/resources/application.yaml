@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: airline
+server:
+  port: 8090    
