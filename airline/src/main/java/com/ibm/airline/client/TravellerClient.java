@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-@FeignClient(name = "TRAVELLER" ,url= "http://localhost:8080")
+@FeignClient(name = "TRAVELLER")
 public interface TravellerClient {
 	
 	@RequestMapping(value="/traveller",method=RequestMethod.GET, produces = "*/*")
