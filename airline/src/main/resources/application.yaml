@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: airline
+server:
+  port: 8090    
+logging:
+  level:
+    org.springframework.web: DEBUG 
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://localhost:8761/eureka
+    refresh:
+      enable: false  
