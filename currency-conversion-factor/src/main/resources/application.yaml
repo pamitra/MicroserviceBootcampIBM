@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: conversionFactor
+  datasource:    url: jdbc:h2:mem:conversionFactor
+    username: sa
+    password: password  
+
+    
