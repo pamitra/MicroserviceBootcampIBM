@@ -41,11 +41,11 @@ public class CurrencyConversionController {
 		return ResponseEntity.ok(conversionRepo.findAll());
 	}
 	
-	@GetMapping("/currency-conversion/{country}")
-	public ResponseEntity<Double> getConversionFactor(@PathVariable String country)
+	@GetMapping("/currency-conversion/{countrycode}")
+	public ResponseEntity<Double> getConversionFactor(@PathVariable String countrycode)
 	{
 //		ResponseEntity<CurrencyConversionFactor> ccf = ResponseEntity.ok(conversionRepo.findBycountry(country));
-		CurrencyConversionFactor currencyConversionFactor = conversionRepo.findBycountry(country);
+		CurrencyConversionFactor currencyConversionFactor = conversionRepo.findBycountry(countrycode);
 		ResponseEntity<Double> convFact = ResponseEntity.ok(currencyConversionFactor.getConFactor());
 		return convFact;
 	}
@@ -61,7 +61,7 @@ public class CurrencyConversionController {
 	  @ResponseStatus(value = HttpStatus.OK, reason = "conversion factor updated")
 //	  public ResponseEntity<CurrencyConversionFactor> updateConversionFactor(@RequestBody String ccf, @RequestBody String country) {
 	  public ResponseEntity<CurrencyConversionFactor> updateConversionFactor(@RequestBody CurrencyConversionFactor conFactr ){
-		  String country = conFactr.getCountry();
+		  String country = conFactr.getCountryCode();
 		  Double conF = conFactr.getConFactor();
 //		  Double conF = Double.parseDouble(conFactr);
 		  CurrencyConversionFactor currencyConversionFactor = conversionRepo.findBycountry(country);
@@ -70,7 +70,7 @@ public class CurrencyConversionController {
 			currencyConversionFactor.setConFactor(conF);
 			return ResponseEntity.ok(conversionRepo.save(currencyConversionFactor));
 		  }else {
-			  currencyConversionFactor.setMessage("country and conversionFactor combination already exists !! ");
+//			  currencyConversionFactor.setMessage("country and conversionFactor combination already exists !! ");
 			  return ResponseEntity.ok(conversionRepo.findBycountry(country));
 		  }
 

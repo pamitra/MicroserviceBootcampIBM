@@ -13,11 +13,9 @@ public class CurrencyConversionFactor {
 	@Id@GeneratedValue
 	private long id;
 	
-	private String country;
+	private String countryCode;
 	
 	private Double conFactor;
-	
-	private String message;
 
 	public long getId() {
 		return id;
@@ -27,12 +25,12 @@ public class CurrencyConversionFactor {
 		this.id = id;
 	}
 
-	public String getCountry() {
-		return country;
+	public String getCountryCode() {
+		return countryCode;
 	}
 
-	public void setCountry(String country) {
-		this.country = country;
+	public void setCountry(String countryCode) {
+		this.countryCode = countryCode;
 	}
 
 	public double getConFactor() {
@@ -43,11 +41,11 @@ public class CurrencyConversionFactor {
 		this.conFactor = conFactor;
 	}
 
-	public String getMessage() {
-		return message;
-	}
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+
+
+
+
+
+
 }

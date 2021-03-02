@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 @Repository
 public interface ConversionRepository extends JpaRepository<CurrencyConversionFactor, Long>{
 
-	 @Query("select cf from CurrencyConversionFactor cf where cf.country = ?1")
-	 CurrencyConversionFactor findBycountry(String country);
+	 @Query("select cf from CurrencyConversionFactor cf where cf.countryCode = ?1")
+	 CurrencyConversionFactor findBycountry(String countryCode);
 	}	
 	 
