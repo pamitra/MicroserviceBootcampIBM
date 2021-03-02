@@ -21,7 +21,7 @@ import com.ibm.currencyconversionfactor.model.CurrencyConversionFactor;
 import com.ibm.currencyconversionfactor.repository.ConversionRepository;
 
 @RestController
-@RequestMapping(path="/conversion")
+@RequestMapping(path="/conversionFactor")
 public class CurrencyConversionController {
 	
 	@Autowired
@@ -31,7 +31,7 @@ public class CurrencyConversionController {
 	@PostConstruct
 	public void init() {
 		CurrencyConversionFactor conversionF = new CurrencyConversionFactor();
-		conversionF.setCountry("india");
+		conversionF.setCountry("INR");
 		conversionF.setConFactor(70.00);
 		conversionRepo.save(conversionF);
 	}
