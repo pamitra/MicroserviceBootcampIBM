@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: currencyConverter
+server:
+  port: 8088    
+logging:
+  level:
+    org.springframework.web: DEBUG 
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://localhost:8761/eureka
+    refresh:
+      enable: false  
