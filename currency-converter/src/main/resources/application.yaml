@@ -1,6 +1,8 @@
 spring:
   application:
-    name: conversionFactor
+    name: currencyConverter
+server:
+  port: 8088    
 logging:
   level:
     org.springframework.web: DEBUG 
@@ -9,6 +11,4 @@ eureka:
     service-url: 
       defaultZone: http://localhost:8761/eureka
     refresh:
-      enable: false
-
-    
+      enable: false  
