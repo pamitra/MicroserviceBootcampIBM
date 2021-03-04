@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conversionfactor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: conversionfactor
+  template:
+    metadata:
+      labels:
+        app: conversionfactor
+    spec:
+      containers:
+      - name: conversionfactor
+        image: docker4mita/conversionfactor-config-client:1.0.0
+        env:
+          - name: SPRING_CLOUD_CONFIG_URI
+            value: http://config-server.default.svc.cluster.local:8888
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 8082
