@@ -2,5 +2,5 @@ spring:
   application:
     name: conversionFactor
   config:
-    name: config-server
-    uri: http://localhost:${config.port:8888}
+    name: configserver
+    uri: http://localhost:${config.port:8889}

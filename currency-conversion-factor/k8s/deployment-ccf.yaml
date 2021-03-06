@@ -17,7 +17,7 @@ spec:
         image: docker4mita/conversionfactor-config-client:1.0.0
         env:
           - name: SPRING_CLOUD_CONFIG_URI
-            value: http://config-server.default.svc.cluster.local:8888
+            value: http://configserver.default.svc.cluster.local:8889
         resources:
           limits:
             memory: "256Mi"

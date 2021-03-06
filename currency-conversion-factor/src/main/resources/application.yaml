@@ -4,11 +4,8 @@ spring:
 logging:
   level:
     org.springframework.web: DEBUG 
-eureka:
-  client:
-    service-url: 
-      defaultZone: http://localhost:8761/eureka
-    refresh:
-      enable: false
-
-    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" 
