@@ -1,34 +1,34 @@
 package com.ibm.currencyconverter.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.currencyconverter.client.ConversionClient;
-import com.ibm.currencyconverter.dto.ConverstionDTO;
+import com.ibm.currencyconverter.dto.ConversionDTO;
 
 @RestController
-@RequestMapping("/converter")
+@EnableFeignClients
 public class CurrencyConverterController {
 	
 	@Autowired
 	private ConversionClient conClient;
 	
-	@GetMapping("/amountConversion")
-	public ResponseEntity<JsonNode> convertCurrency(@RequestBody String countryCode, @RequestBody Double amount){
-		ResponseEntity<JsonNode> conF = conClient.getConversionFactor(countryCode);
-		JsonNode content = conF.getBody();
-		Double conversionF = content.asDouble(1.00);
+	@Autowired
+	private ConversionDTO dto;
+	
+	@RequestMapping(path = "/converter/{countrycode}/{amount}", method = RequestMethod.GET)
+	public ResponseEntity<Double> convertCurrency(@PathVariable String countrycode, @PathVariable Double amount){
+		
+		ResponseEntity<Double> respEntity = conClient.getConversionFactor(countrycode);
+		Double conversionF = respEntity.getBody();
 		Double convertedAmt = amount * conversionF;
-		ObjectMapper mapper = new ObjectMapper(); 
-		JsonNode node = mapper.convertValue(convertedAmt, JsonNode.class);
-		return ResponseEntity.ok(node);
+		dto.setConvertedAmount(convertedAmt);
+		return ResponseEntity.ok(dto.getConvertedAmount());
 	}
 	
 }

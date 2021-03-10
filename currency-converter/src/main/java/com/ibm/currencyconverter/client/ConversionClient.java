@@ -5,12 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
-@FeignClient(name = "CONVERSIONFACTOR")
+@FeignClient(url ="http://169.57.99.2:30082",name = "CONVERSIONFACTOR")
 public interface ConversionClient {
 
-	@GetMapping(value="/conversionFactor/{countryCode}" ,produces =  "*/*")
-	public ResponseEntity<JsonNode> getConversionFactor(@PathVariable String countryCode);
+	@GetMapping(value="conversionFactor/currency-conversion/{countryCode}" ,produces =  "*/*")
+	public ResponseEntity<Double> getConversionFactor(@PathVariable String countryCode);
 	
 }
