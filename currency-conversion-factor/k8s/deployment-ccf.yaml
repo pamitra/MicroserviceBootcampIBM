@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: conversionfactor
-        image: docker4mita/conversionfactor-config-client:1.0.0
+        image: docker4mita/conversionfactor-config-client:1.0.2
         env:
           - name: SPRING_CLOUD_CONFIG_URI
             value: http://configserver.default.svc.cluster.local:8889
