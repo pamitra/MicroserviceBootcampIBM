@@ -2,10 +2,16 @@ spring:
   application:
     name: currencyConverter
 server:
-  port: 8088    
+  port: 8083    
 logging:
   level:
     org.springframework.web: DEBUG 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" 
+            
 #eureka:
 #  client:
 #    service-url: 

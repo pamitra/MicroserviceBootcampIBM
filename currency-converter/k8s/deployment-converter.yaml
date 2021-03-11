@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currencyconverter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: currencyconverter
+  template:
+    metadata:
+      labels:
+        app: currencyconverter
+    spec:
+      containers:
+      - name: currencyconverter
+        image: docker4mita/currencyconverter-config-client:1.0.2
+        env:
+          - name: SPRING_CLOUD_CONFIG_URI
+            value: http://configserver.default.svc.cluster.local:8889
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 8083
